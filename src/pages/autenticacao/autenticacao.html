@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-navbar color="laranja">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Login
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="signOut()" *ngIf="logado">sair</button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+
+  
+  
+<ion-content padding>
+
+    <button ion-button (click)="signInWithFacebook()" block color="facebook" *ngIf="naologado">
+        FACEBOOK
+    </button>
+
+    <br *ngIf="naologado">
+
+  
+    <button ion-button block color="primary" (click)="abrirPaginaLogin()" *ngIf="naologado">
+        ENTRAR
+    </button>
+    
+    <br *ngIf="naologado">
+  
+    <button ion-button block clear (click)="openPage()" *ngIf="naologado">
+        OU CRIAR UMA CONTA
+    </button>
+
+
+    <ion-card *ngIf="logado" >
+        <ion-card-header>            
+            {{email}}
+        </ion-card-header>
+        <ion-list>
+            <button ion-item>
+                <ion-icon name="pin" item-start color="laranja"></ion-icon>
+                {{localizacao}} {{areaAdm}}
+            </button>
+            <button ion-item>
+                <ion-icon name="ribbon" item-start color="laranja"></ion-icon>
+                VERSÃO {{versao}}
+            </button>
+            <button ion-item (click)="abrirPromocoesSalvas()">
+                <ion-icon name="list" item-start color="laranja"></ion-icon>
+                Promoções salvas
+            </button>
+        </ion-list>
+    </ion-card>
+    
+
+    <ion-footer no-shadow *ngIf="logado">
+        <ion-toolbar position="bottom">
+            <button ion-button color="danger" block (click)="deletarConta()">
+                EXCLUIR MINHA CONTA
+            </button>
+        </ion-toolbar>
+    </ion-footer>    
+  
+</ion-content>
+

@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar color="laranja">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Home</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+    <ion-header>
+        <ion-navbar>
+            <ion-title>Recomendado para você</ion-title>
+        </ion-navbar>
+    </ion-header>
+
+    <ion-card *ngFor="let imgs of lista | async">
+        <img src="{{imgs.url}}"/>
+        <ion-card-content>
+            <ion-card-title>
+                {{imgs.nome}}
+            </ion-card-title>
+            <p>
+                {{imgs.local}}
+            </p>
+        </ion-card-content>
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear small color="danger" icon-start (click)="salvarPromocao(imgs)">
+                <ion-icon name='heart'></ion-icon>
+                    Salvar
+                </button>
+            </ion-col>
+            <ion-col text-right>
+                <button ion-button clear small color="laranja" icon-start (click)="irParaMapa(imgs)" >
+                <ion-icon name='pin'></ion-icon>
+                    Mostrar no mapa
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+    <!--ion-card-content>
+        Latest Picture:
+        <img [src]="base64Image" *ngIf="base64Image" />
+    </ion-card-content-->
+
+
+
+    <ion-fab right bottom>
+        <button ion-fab color="verde">
+            <ion-icon name="add"></ion-icon>
+        </button>
+        <ion-fab-list side="top">
+            
+            <button ion-fab (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
+            <button ion-fab (click)="pickImageFromGallery()"><ion-icon name="photos"></ion-icon></button>
+            <button ion-fab (click)="codigoBarras()"><ion-icon name="barcode"></ion-icon></button>
+        
+        </ion-fab-list>
+    </ion-fab>
+
+
+</ion-content>
